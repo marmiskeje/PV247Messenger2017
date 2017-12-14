@@ -7,7 +7,7 @@ export const currentChannelEventsProcessor = (prevState = { id: null, messages: 
     switch (event.type){
         case Events.UPDATED_CURRENT_CHANNEL_EVENT:
             doSort = true;
-            newState = { id: event.payload.currentChannelId, messages: event.payload.messages };
+            newState = { id: event.payload.currentChannel.id, name: event.payload.currentChannel.name, messages: event.payload.messages };
             break;
         case Events.NEW_MESSAGE_CREATED_EVENT:
         case Events.UPDATED_MESSAGE_EVENT:

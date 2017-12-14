@@ -2,6 +2,19 @@ html, body {
     height: 100%;
 }
 
+.webpage-menu {
+    border-right: 1px solid lightgray;
+}
+
+.webpage-menu .wrapper {
+    margin: 5px;
+}
+
+.webpage-header {
+    border-bottom: 1px solid lightgray;
+    min-height: 55px;
+}
+
 .decent-bottom-space {
     margin-bottom: 5px;
 }
@@ -15,4 +28,72 @@ html, body {
 .imgPreview img {
     width: 100%;
     height: 100%;
+}
+
+.channel-row{
+    min-height: 40px;
+    cursor: pointer;
+}
+
+.channel-row:nth-child(2n+1){
+    background: rgba(2, 90, 165, 0.13);
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.send-message-area {
+    position: fixed;
+    bottom: 0;
+}
+
+textarea {
+    min-width: 450px;
+    resize: none;
+}
+
+.messenger-message {
+    min-height: 70px;
+    background: rgba(2, 90, 165, 0.04);
+    margin-bottom:10px;
+}
+
+.messenger-messages-area {
+    max-height: calc(100% - 210px);
+}
+
+.messenger-user-picture {
+    width: 40px;
+    height: 40px;
+}
+
+.messenger-user-nickname {
+    font-weight: bold;
+}
+
+.messenger-message-text {
+    background: #025aa5;
+    color: white;
+    min-height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.messenger-message-text-own {
+    background: rgba(2, 90, 165, 0.10);
+    color: inherit;
+}
+
+.messenger-message-rate {
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.hor-separator {
+    width: 20px;
+}
+
+i {
+    cursor: pointer;
 }

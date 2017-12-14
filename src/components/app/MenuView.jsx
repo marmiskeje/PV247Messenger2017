@@ -18,18 +18,36 @@ class MenuView extends React.Component {
 
     render() {
         const channels = this.props.channels.valueSeq().map(c =>
-            <p key={c.id}>
-                <span onClick={() => this.props.onChannelSelected(c)}>{c.name}</span>
-                <button type="submit" className="btn" onClick={() => this.props.onInviteUser(c)}>I</button>
-                <button type="submit" className="btn" onClick={() => this.props.onUpdateChannelName(c)}>U</button>
-                {c.ownerId === this.props.currentUser.id &&
-                <button type="submit" className="btn" onClick={() => this.props.onDeleteChannel(c.id)}>X</button>
-                }
-            </p>
+            <div className="row channel-row align-items-center" key={c.id} onClick={() => this.props.onChannelSelected(c)}>
+                <div className="col-7">
+                    <span>{c.name}</span>
+                </div>
+                <div className="col-1">
+                    <i className="fa fa-user-plus" onClick={() => this.props.onInviteUser(c)}>
+                    </i>
+                </div>
+                <div className="col-1">
+                    <i className="fa fa-edit" onClick={() => this.props.onUpdateChannelName(c)}>
+                    </i>
+                </div>
+                <div className="col-1">
+                    {c.ownerId === this.props.currentUser.id &&
+                    <i className="fa fa-trash" onClick={() => this.props.onDeleteChannel(c.id)}>
+                    </i>
+                    }
+                </div>
+            </div>
         );
-        return <div>
-                <div>
-                    <button type="submit" className="btn btn-primary" onClick={this.props.onAddChannel}>Add channel</button>
+        return <div className="container wrapper">
+                <div className="row">
+                    <div className="col text-right">
+                        <button type="submit" className="btn btn-primary" onClick={this.props.onAddChannel}>Add channel</button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        &nbsp;
+                    </div>
                 </div>
                 {channels}
             </div>;

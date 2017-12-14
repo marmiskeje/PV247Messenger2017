@@ -19,6 +19,7 @@ export const getInitialState = () => ({
     channels: Immutable.OrderedMap(),
     currentChannel: {
         id: null,
+        name: '',
         messages: Immutable.OrderedMap()
     }
 });

@@ -24,7 +24,7 @@ class MainView extends React.Component {
 
     render() {
         return <div className="container-fluid h-100">
-            <div className="row align-items-center">
+            <div className="row align-items-center webpage-header">
                 <div className="col-4">
                 </div>
                 <div className="col-2">
@@ -42,14 +42,14 @@ class MainView extends React.Component {
                     <span>{this.props.currentUser.nickname || this.props.currentUser.email}</span>
                 </div>
                 <div className="col-1">
-                    <button type="submit" className="btn" data-toggle="modal" data-target="#profileDialog">Profile</button>
+                    <button type="submit" className="btn btn-secondary" data-toggle="modal" data-target="#profileDialog">Profile</button>
                 </div>
                 <div className="col-1">
-                    <button type="submit" className="btn" onClick={this.props.onLogout}>Logout</button>
+                    <button type="submit" className="btn btn-danger" onClick={this.props.onLogout}>Logout</button>
                 </div>
             </div>
             <div className="row h-100">
-                <div className="col-2">
+                <div className="col-2 webpage-menu">
                     <MenuView />
                 </div>
                 <div className="col-10">

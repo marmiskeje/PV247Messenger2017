@@ -65,11 +65,11 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)/,
+                test: /\.(eot|svg|ttf|woff|woff2|otf)/,
                 use: {
                     loader: 'url-loader',
                     options: {
-                        name: 'assets/[name].[ext]',
+                        name: 'fonts/[name].[ext]',
                         limit: 10000,
                     },
                 }

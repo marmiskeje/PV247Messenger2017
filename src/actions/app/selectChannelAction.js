@@ -24,7 +24,7 @@ export const selectChannelAction = (channel) => {
                     }
                 );
             }
-            dispatch(updatedCurrentChannelEvent(channel.id, messagesMap));
+            dispatch(updatedCurrentChannelEvent(channel, messagesMap));
         }, function(){
             NotificationService.show('Getting of messages failed. Server error occurred.', 'error');
         });
