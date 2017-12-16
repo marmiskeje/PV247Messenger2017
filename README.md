@@ -13,10 +13,7 @@ After channel selection there is pooling for new messages every 10 seconds.
 
 
 
-How to run:
+## How to run:
 
-npm install
-
-then
-
-npm run start
+1. npm install
+1. npm run start
