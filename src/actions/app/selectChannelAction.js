@@ -7,6 +7,10 @@ import {MessagesService} from "../../services/MessagesService";
 export const selectChannelAction = (channel) => {
     return (dispatch) => {
         const currentState = store.getState();
+        if (currentState.currentChannel && currentState.currentChannel.timerId){
+            clearInterval(currentState.currentChannel.timerId);
+            dispatch(updatedCurrentChannelEvent(null, currentState.currentChannel, currentState.currentChannel.messages));
+        }
         MessagesService.getMessagesForChannel(channel.id, function(messages){
             let messagesMap = Immutable.OrderedMap();
             for (var i = 0; i < messages.length; i++){
@@ -24,7 +28,14 @@ export const selectChannelAction = (channel) => {
                     }
                 );
             }
-            dispatch(updatedCurrentChannelEvent(channel, messagesMap));
+
+            const timerId = setInterval(function(){
+                const currentState = store.getState();
+                if (currentState.currentChannel && currentState.currentChannel.id) {
+                    store.dispatch(selectChannelAction(currentState.currentChannel));
+                }
+            }, 10000);
+            dispatch(updatedCurrentChannelEvent(timerId, channel, messagesMap));
         }, function(){
             NotificationService.show('Getting of messages failed. Server error occurred.', 'error');
         });

@@ -4,10 +4,9 @@ import {ChannelsService} from '../../services/ChannelsService';
 import { store } from '../../utils/createStore';
 import * as Immutable from "immutable";
 
-export const removeChannelAction = (channelId) => {
+export const removeChannelAction = (channelId, currentState = store.getState(), notificationService = NotificationService, channelsService = ChannelsService) => {
     return (dispatch) => {
-        ChannelsService.removeChannel(channelId, function(appData){
-            const currentState = store.getState();
+        channelsService.removeChannel(channelId, function(appData){
             const currentUserId = currentState.users.currentUserId;
 
             let channelsMap = Immutable.OrderedMap();
@@ -20,7 +19,7 @@ export const removeChannelAction = (channelId) => {
             }
             dispatch(updatedChannelsEvent(channelsMap));
         }, function(){
-            NotificationService.show('Removing of channel failed. Server error occurred.', 'error');
+            notificationService.show('Removing of channel failed. Server error occurred.', 'error');
         });
     };
 };

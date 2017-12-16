@@ -1,13 +1,13 @@
 import * as Immutable from 'immutable';
 import * as Events from '../constants/Events';
 
-export const currentChannelEventsProcessor = (prevState = { id: null, messages: Immutable.OrderedMap()}, event) => {
+export const currentChannelEventsProcessor = (prevState = { id: null, name: '', timerId: null, messages: Immutable.OrderedMap()}, event) => {
     let newState = prevState;
     let doSort = false;
     switch (event.type){
         case Events.UPDATED_CURRENT_CHANNEL_EVENT:
             doSort = true;
-            newState = { id: event.payload.currentChannel.id, name: event.payload.currentChannel.name, messages: event.payload.messages };
+            newState = { id: event.payload.currentChannel.id, name: event.payload.currentChannel.name, timerId: event.payload.timerId, messages: event.payload.messages };
             break;
         case Events.NEW_MESSAGE_CREATED_EVENT:
         case Events.UPDATED_MESSAGE_EVENT:
@@ -18,7 +18,7 @@ export const currentChannelEventsProcessor = (prevState = { id: null, messages: 
             newState.messages = newState.messages.remove(event.payload.messageId);
             break;
         case Events.DESTROY_SESSION_EVENT:
-            newState = { id: null, messages: Immutable.OrderedMap() };
+            newState = { id: null, name: '', timerId: null,  messages: Immutable.OrderedMap() };
             break;
     }
     if (doSort){

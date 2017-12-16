@@ -1,7 +1,7 @@
 import * as Events from '../constants/Events';
 import * as Immutable from "immutable";
 
-export const usersEventsProcessor = (prevState = { currentUser: null, allByIds: Immutable.Map(), allByEmails: Immutable.Map() }, event) => {
+export const usersEventsProcessor = (prevState = { currentUserId: null, currentUser: null, allByIds: Immutable.Map(), allByEmails: Immutable.Map() }, event) => {
     let newState = prevState;
     const updateCurrentUser = function(state){
         if (state.currentUserId){
@@ -27,7 +27,7 @@ export const usersEventsProcessor = (prevState = { currentUser: null, allByIds: 
             newState.currentUser = event.payload.currentUser;
             break;
         case Events.DESTROY_SESSION_EVENT:
-            newState = { currentUser: null, allByIds: Immutable.Map(), allByEmails: Immutable.Map() };
+            newState = { currentUserId: null, currentUser: null, allByIds: Immutable.Map(), allByEmails: Immutable.Map() };
             break;
     }
     return newState;

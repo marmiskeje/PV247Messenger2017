@@ -19,4 +19,12 @@ class NotificationServiceImplementation {
     }
 }
 
+class MockNotificationServiceImplementation {
+
+    show(message, severity) {
+        return console.log(`Mock notification - Severity: ${severity}. Message: ${message}`);
+    }
+}
+
 export const NotificationService = new NotificationServiceImplementation();
+export const MockNotificationService = new MockNotificationServiceImplementation();

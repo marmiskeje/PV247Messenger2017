@@ -41,7 +41,7 @@ class ChannelsServiceImplementation{
         ];
         this.apiService.patch(`/app/${ApiConstants.API_APP_ID}`, request, onSuccess, onError);
     }
-
 }
+
 
 export const ChannelsService = new ChannelsServiceImplementation(ApiService);

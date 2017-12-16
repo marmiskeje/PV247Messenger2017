@@ -3,11 +3,11 @@ import {NotificationService} from '../../services/NotificationService';
 import { store } from '../../utils/createStore';
 import {MessagesService} from "../../services/MessagesService";
 
-export const createMessageAction = (channelId, text) => {
+export const createMessageAction = (channelId, text, currentState = store.getState(), notificationService = NotificationService, messagesService = MessagesService) => {
     return (dispatch) => {
         if (channelId && text){
-            const currentState = store.getState();
-            MessagesService.createMessage(channelId, { value: text, customData: JSON.stringify({rate: 0})}, function(createdMessage){
+            //const currentState = store.getState();
+            messagesService.createMessage(channelId, { value: text, customData: JSON.stringify({rate: 0})}, function(createdMessage){
                 const createdByUser = currentState.users.allByEmails.get(createdMessage.createdBy);
                 const updatedByUser = currentState.users.allByEmails.get(createdMessage.updatedBy);
                 const customData = JSON.parse(createdMessage.customData);
@@ -20,7 +20,7 @@ export const createMessageAction = (channelId, text) => {
                 };
                 dispatch(newMessageCreatedEvent(message));
             }, function(){
-                NotificationService.show('Creating of message failed. Server error occurred.', 'error');
+                notificationService.show('Creating of message failed. Server error occurred.', 'error');
             });
         }
     };

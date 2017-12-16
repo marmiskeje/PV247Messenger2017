@@ -4,19 +4,18 @@ import {ChannelsService} from '../../services/ChannelsService';
 import { store } from '../../utils/createStore';
 import * as Immutable from "immutable";
 
-export const updateChannelNameAction = (channel) => {
+export const updateChannelNameAction = (channel, currentState = store.getState(), notificationService = NotificationService, channelsService = ChannelsService) => {
     return (dispatch) => {
         let channelName = prompt('Enter channel name for update:', channel.name);
         if (channelName != null){
             channelName = channelName.trim();
             if (channelName.length === 0){
-                NotificationService.show('Invalid channel name!', 'warning');
+                notificationService.show('Invalid channel name!', 'warning');
             } else {
-                const currentState = store.getState();
                 const currentUserId = currentState.users.currentUserId;
 
                 const channelRequest = {id: channel.id, name: channelName, customData: JSON.stringify({ownerId: channel.ownerId, memberIds: channel.memberIds})};
-                ChannelsService.updateChannel(channelRequest, function(appData){
+                channelsService.updateChannel(channelRequest, function(appData){
                     let channelsMap = Immutable.OrderedMap();
                     for (var i = 0; i < appData.channels.length; i++){
                         const channel = appData.channels[i];
@@ -27,7 +26,7 @@ export const updateChannelNameAction = (channel) => {
                     }
                     dispatch(updatedChannelsEvent(channelsMap));
                 }, function(){
-                    NotificationService.show('Update of channel failed. Server error occurred.', 'error');
+                    notificationService.show('Update of channel failed. Server error occurred.', 'error');
                 });
             }
         }
