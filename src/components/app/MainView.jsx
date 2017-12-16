@@ -1,9 +1,9 @@
 import React from 'react';
 import {MenuView} from '../../containers-redux/app/MenuView.jsx';
-import {Notification} from '../shared/Notification';
+import {Notification} from '../shared/Notification.jsx';
 import {MessagesView} from "../../containers-redux/app/MessagesView.jsx";
 import * as PropTypes from "prop-types";
-import {ProfileDialogView} from "../../containers-redux/app/ProfileDialogView.jsx";
+import {ProfileDialogView} from "../../containers-redux/profile/ProfileDialogView.jsx";
 
 class MainView extends React.Component {
     static propTypes = {

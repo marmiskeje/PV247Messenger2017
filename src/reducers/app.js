@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { sharedEventsProcessor } from './shared/sharedEventsProcessor.js';
-import {channelsEventsProcessor} from './shared/channelsEventsProcessor.js';
-import {usersEventsProcessor} from "./shared/usersEventsProcessor";
-import {currentChannelEventsProcessor} from "./shared/currentChannelEventsProcessor";
+import { sharedEventsProcessor } from './sharedEventsProcessor.js';
+import {channelsEventsProcessor} from './channelsEventsProcessor.js';
+import {usersEventsProcessor} from "./usersEventsProcessor";
+import {currentChannelEventsProcessor} from "./currentChannelEventsProcessor";
 
 export const app = combineReducers({
     shared: sharedEventsProcessor,

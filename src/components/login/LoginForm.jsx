@@ -28,9 +28,6 @@ class LoginForm extends React.Component {
                 <div className="loginButtonsContainer">
                     <button type="submit" className="btn btn-primary" onClick={() => this.props.onSubmit(this.state.email)}>Login</button>
                 </div>
-                <div className="loginInfoContainer">
-                    <span>Here will be errors</span>
-                </div>
             </form>
         );
     }

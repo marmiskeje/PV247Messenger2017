@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as routes from '../../constants/Routes';
 import { LoginForm } from '../../containers-redux/login/LoginForm.jsx';
-import {Notification} from '../shared/Notification';
+import {Notification} from '../shared/Notification.jsx';
 
 const LoginView = ({ from }) => {
     const originalLocation = from || { pathname: routes.ROOT };

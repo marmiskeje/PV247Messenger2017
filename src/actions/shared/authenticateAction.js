@@ -2,7 +2,7 @@ import * as keys from '../../constants/LocalStorageKeys';
 import { push } from 'connected-react-router';
 import {AuthService} from '../../services/AuthService';
 import {UsersService} from '../../services/UsersService';
-import {createSessionEvent} from '../../events/createSessionEvents';
+import {createSessionEvent} from '../../events/createSessionEvent';
 import {NotificationService} from '../../services/NotificationService';
 
 export const authenticateAction = (destinationLocation, email) => {
