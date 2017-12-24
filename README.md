@@ -9,7 +9,7 @@ and
 test2@test.com
 
 
-After channel selection there is pooling for new messages every 10 seconds.
+After channel selection there is polling for new messages every 10 seconds.
 
 
 
